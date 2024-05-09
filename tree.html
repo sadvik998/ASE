@@ -1,0 +1,105 @@
+
+<html>
+<head>    
+    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FSM</title>
+    <meta name="description" content="Org Chart JS Overview">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Overview - Org Chart JS">
+    <meta property="og:description" content="Org Chart JS Overview">
+    <meta property="og:image" content="https://code.balkan.app/Screenshot/org-chart-js/overview"></partial>        
+    <link rel="canonical" href="https://code.balkan.app/org-chart-js/overview" />
+    
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <style>        
+        /*CSS*/
+html, body{
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin:0;
+  overflow: hidden;
+  font-family: Helvetica;
+}
+#tree{
+  width:100%;
+  height:100%;
+}
+    </style>
+</head>
+<body>
+
+
+    <!--HTML-->
+<script src="https://balkan.app/js/OrgChart.js"></script>
+<div id="tree"/>
+     
+    <script>    
+        //JavaScript
+
+ var people = document.getElementById("tree");
+    if (people) {
+        var chart = new OrgChart(people, {
+            scaleInitial: OrgChart.match.boundary,
+            scaleMax: 1,
+            mode: 'white',
+            template: "olivia",
+            enableDragDrop: true,
+            layout: OrgChart.mixed,
+            mouseScrool: OrgChart.none, 
+            menu: {
+                pdfPreview: {
+                    text: "PDF Preview",
+                    icon: OrgChart.icon.pdf(24, 24, '#7A7A7A'),
+                    onClick: function preview() {
+                        OrgChart.pdfPrevUI.show(chart, {
+                            format: 'A4',
+                            footer: 'Page {current-page} of {total-pages}'
+                        });
+                    }
+                },
+                pdf: { text: "Export PDF" },
+                png: { text: "Export PNG" },
+                svg: { text: "Export SVG" },
+                csv: { text: "Export CSV" }
+            },
+            nodeMenu: {
+                add: { text: "Add New" },
+                edit: { text: "Edit" },
+                remove: { text: "Remove" },
+            },
+            nodeBinding: {
+                field_0: "name",
+                field_1: "title",
+                img_0: "img"
+            },
+            linkBinding: {
+                link_field_0: "DOB",
+            },
+            nodes: [
+                { id: "1", name: "Jack Hill", title: "GRATE GRAND PARENTS", email: "amber@domain.com", img: "https://cdn.balkan.app/shared/c/1.jpg" },
+                { id: "2", pid: "1", name: "Lexie Cole", title: "GRAND PARENTS", email: "ava@domain.com", img: "https://cdn.balkan.app/shared/c/2.jpg", dob: "10/10/2018" },
+                { id: "3", pid: "1", name: "Janae Barrett", title: "PATERNAL GRAND PARENTS", img: "https://cdn.balkan.app/shared/c/3.jpg" },
+                { id: "4", pid: "1", name: "Aaliyah Webb", title: " MATERNAL GRAND PARENTS", email: "jay@domain.com", img: "https://cdn.balkan.app/shared/c/4.jpg" },
+                { id: "5", pid: "2", name: "Elliot Ross", title: "PARENTS", img: "https://cdn.balkan.app/shared/c/5.jpg" },
+                { id: "6", pid: "2", name: "Anahi Gordon", title: "PATERNAL PARENTS", img: "https://cdn.balkan.app/shared/c/6.jpg" },
+                { id: "7", pid: "2", name: "Knox Macias", title: "MATERNAL PARENTS", img: "https://cdn.balkan.app/shared/c/7.jpg" },
+                { id: "8", pid: "3", name: "Nash Ingram", title: "CHILD 1", email: "kohen@domain.com", img: "https://cdn.balkan.app/shared/c/8.jpg" },
+                { id: "9", pid: "3", name: "Sage Barnett", title: "CHILD 2", img: "https://cdn.balkan.app/shared/c/9.jpg" },
+                { id: "10", pid: "8", name: "Alice Gray", title: "CHILD 3", img: "https://cdn.balkan.app/shared/c/10.jpg" },
+                { id: "11", pid: "8", name: "Anne Ewing", title: "CHILD 4", img: "https://cdn.balkan.app/shared/c/11.jpg" },
+                { id: "12", pid: "9", name: "Reuben Mcleod", title: "CHILD 5", img: "https://cdn.balkan.app/shared/c/12.jpg" },
+                { id: "13", pid: "9", name: "Ariel Wiley", title: "CHILD 6", img: "https://cdn.balkan.app/shared/c/13.jpg" },
+                { id: "14", pid: "4", name: "Lucas West", title: "CHILD 7", img: "https://cdn.balkan.app/shared/c/14.jpg" },
+                { id: "15", pid: "4", name: "Adan Travis", title: "CHILD 8", img: "https://cdn.balkan.app/shared/c/15.jpg" },
+                { id: "16", pid: "4", name: "Alex Snider", title: "CHILD 9", img: "https://cdn.balkan.app/shared/c/16.jpg" }
+            ]
+        });
+    }
+    </script>
+</body>
+</html>
+
